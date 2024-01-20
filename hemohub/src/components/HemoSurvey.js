@@ -1,17 +1,17 @@
 import React from 'react'
 import { Survey } from 'survey-react-ui'
 import { Model } from 'survey-core'
+import 'survey-core/defaultV2.min.css';
+
 
 const surveyJson = {
-    elements: [{
-        name: "FirstName",
-        title: "Enter your first name:",
-        type: "text"
-    }, {
-        name: "LastName",
-        title: "Enter your last name:",
-        type: "text"
-    }]
+    elements: [
+        {
+          "type": "boolean",
+          "name": "question1",
+          "title": "Do you agree?",
+        }
+      ]
 }
 
 const HemoSurvey = () => {
