@@ -1,4 +1,4 @@
-body {
+.home-container {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -11,13 +11,13 @@ body {
     min-height: 100vh;
 }
 
-header {
+.home-header {
     background-color: #333;
     padding: 10px;
     text-align: center;
 }
 
-button {
+.home-button {
     padding: 10px;
     font-size: 16px;
     margin: 5px;
@@ -34,12 +34,7 @@ button {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-h2 {
-    color: #333;
-}
-
-p {
-    color: #666;
+    display: flex;
+    justify-content: center;
 }
