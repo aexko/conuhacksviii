@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    background: linear-gradient(to right, #ff957b, #feb47b); /* Gradient colors */
 }
 
 .home-header {
@@ -18,14 +19,21 @@
 }
 
 .home-button {
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 16px;
     margin: 5px;
     cursor: pointer;
     background-color: #e74c3c; /* Red theme */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px; /* Increased border-radius for a rounded button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle box shadow */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+
+    /* Hover effect */
+    &:hover {
+        background-color: #c0392b; /* Darker red on hover */
+    }
 }
 
 .stats-section {
