@@ -5,6 +5,7 @@ import 'survey-core/defaultV2.css';
 import { useNavigate } from 'react-router-dom';
 import { ThreeDimensionalLight } from 'survey-core/themes/three-dimensional-light'
 import './css/HemoSurvey.css'
+import {BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar} from 'recharts';
 
 const surveyJson = {
     elements: [
@@ -75,6 +76,13 @@ const surveyJson = {
     ]
 }
 
+const dataStats = [
+    {"year": "2019", "donors": 801281},
+    {"year": "2020", "donors": 765809},
+    {"year": "2021", "donors": 797490},
+    {"year": "2022", "donors": 767424}
+]
+
 const HemoSurvey = () => {
     const survey = new Model(surveyJson)
     const navigate = useNavigate()
@@ -93,8 +101,18 @@ const HemoSurvey = () => {
     return (
         <div>
             <Survey model={survey} />
+        
+            <BarChart width={730} height={250} data={dataStats}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis dataKey="donors"/>
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="donors" fill="#82ca9d" />
+            </BarChart>
         </div>
     )
 }
+
 
 export default HemoSurvey
