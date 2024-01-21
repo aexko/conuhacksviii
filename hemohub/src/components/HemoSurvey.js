@@ -17,7 +17,7 @@ const surveyJson = {
         {
             "type": "boolean",
             "name": "q2",
-            "title": "Do you weigh less than 110 pounds (50kg)?",
+            "title": "Do you weight less than 110 pounds (50kg)?",
         }
         ,
         {

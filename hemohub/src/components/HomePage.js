@@ -17,16 +17,16 @@ const HomePage = () => {
     ]
     const COLORS = ["#FF0000","#FFA500"]
     const provinceData = [
-        {name: "NL", "donors": 350000},
-        {name: "PEI", "donors": 497000},
-        {name: "NS", "donors": 396000},
-        {name: "NB", "donors": 345000},
-        {name: "QC", "donors": 264000},
-        {name: "ON", "donors": 532000},
-        {name: "MB", "donors": 699000},
-        {name: "SK", "donors": 680000},
-        {name: "AB", "donors": 863000},
-        {name: "BC", "donors": 704000}
+        {name: "NL", "donors": 350000, fill: "#990F02"},
+        {name: "PEI", "donors": 497000, fill: "#FC5404"},
+        {name: "NS", "donors": 396000, fill: "#FCB001"},
+        {name: "NB", "donors": 345000, fill: "#FFFF00"},
+        {name: "QC", "donors": 264000, fill: "#00FF00"},
+        {name: "ON", "donors": 532000, fill: "#006400"},
+        {name: "MB", "donors": 699000, fill: "#6F9CDE"},
+        {name: "SK", "donors": 680000, fill: "#0000FF"},
+        {name: "AB", "donors": 863000, fill: "#C08DFA"},
+        {name: "BC", "donors": 704000, fill: "#4B0082"}
 
     ]
     return (
@@ -68,7 +68,7 @@ const HomePage = () => {
                 endAngle={0}
                 >
                 <text x={200} y={20} style={{fontSize:'18px', fill:'black', fontWeight:'bold'}}>Amount of donors in each Canadian province</text>
-                <RadialBar minAngle={15} fill="#8884d8" background clockWise={true} dataKey='donors' />
+                <RadialBar minAngle={15} fill="#8884d8" background clockWise={true} dataKey='donors'/>
                 <Legend iconSize={15} width={120} height={140} layout='vertical' verticalAlign='middle' align="right"/>
                 <Tooltip />
                 </RadialBarChart>
