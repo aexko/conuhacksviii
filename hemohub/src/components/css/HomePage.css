@@ -46,3 +46,7 @@
     display: flex;
     justify-content: center;
 }
+
+body {
+    background: linear-gradient(to right, #ff957b, #feb47b); /* Gradient colors */
+}

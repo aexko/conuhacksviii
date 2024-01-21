@@ -1,7 +1,10 @@
 import React from 'react'
 import { Survey } from 'survey-react-ui'
 import { Model } from 'survey-core'
-import 'survey-core/defaultV2.min.css';
+import 'survey-core/defaultV2.css';
+import { useNavigate } from 'react-router-dom';
+import { ThreeDimensionalLight } from 'survey-core/themes/three-dimensional-light'
+import './css/HemoSurvey.css'
 import {BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar} from 'recharts';
 
 const surveyJson = {
@@ -70,11 +73,23 @@ const surveyJson = {
             "name": "q11",
             "title": "Have you taken any medications in the last week?",
         }
-      ]
+    ]
 }
 
 const HemoSurvey = () => {
     const survey = new Model(surveyJson)
+    const navigate = useNavigate()
+
+    const userValid = (data) => {
+        return Object.values(data).every(value => value === false);
+    } 
+
+    survey.applyTheme(ThreeDimensionalLight)
+    survey.onComplete.add((sender, options) => {
+        console.log(JSON.stringify(sender.data, null, 3))
+        console.log(userValid(sender.data))
+        navigate('/survey-done', {state: {valid: userValid(sender.data)}})
+    })
 
     return (
         <div>
