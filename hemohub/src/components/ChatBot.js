@@ -14,6 +14,9 @@ const systemMessage = {
     "Speak as if you were a customer service representative at a donation center",
 };
 
+
+
+// https://chatscope.io/docs/
 const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
@@ -63,21 +66,17 @@ const ChatBot = () => {
     await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + process.env.OPENAI_API_KEY,
+        Authorization: "Bearer " + process.env.OPEN_AI_KEY,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(apiRequestBody),
     })
       .then((data) => {
         console.log(data);
-        return data.json();
-      })
-      .then((data) => {
-        console.log(data);
         setMessages([
           ...chatMessages,
           {
-            message: data.choices[0].message.content,
+            message: data.choices[0].text,
             sender: "ChatGPT",
           },
         ]);
