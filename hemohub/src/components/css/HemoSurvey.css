@@ -1,0 +1,6 @@
+body {
+}
+
+.sd-root-modern {
+    --sjs-general-backcolor-dim: linear-gradient(to right, #ff957b, #feb47b) !important;
+}
