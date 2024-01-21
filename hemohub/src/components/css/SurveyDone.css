@@ -1,0 +1,17 @@
+.survey-done-container {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20vh auto; /* Vertical margin for centering, auto for horizontal centering */
+  max-width: 80vh; /* Set a maximum width for the container */
+}
+
+.eligible-message {
+  color: #27ae60; /* Green color for eligible message */
+}
+
+.not-eligible-message {
+  color: #e74c3c; /* Red color for not eligible message */
+}

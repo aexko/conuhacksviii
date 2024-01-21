@@ -1,0 +1,32 @@
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #e74c3c; /* Red theme */
+    color: white;
+    border: none;
+    border-radius: 25px; /* Increased border-radius for a rounded button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle box shadow */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+
+    /* Hover effect */
+    &:hover {
+        background-color: #c0392b; /* Darker red on hover */
+    }
+}
+
+.container {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20vh auto; /* Vertical margin for centering, auto for horizontal centering */
+  max-width: 80vh; /* Set a maximum width for the container */
+}
+
+.input {
+    padding: 8px;
+    font-size: 16px;
+}
