@@ -92,7 +92,7 @@ const HemoSurvey = () => {
     })
 
     return (
-        <div>
+        <div style={{minWidth: '60rem'}}>
             <Survey model={survey} />
         </div>
     )

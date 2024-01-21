@@ -34,6 +34,8 @@ const HomePage = () => {
             <button className="home-button" onClick={() => navigate('/survey')}>Check eligibility</button>
             <button className="home-button" onClick={() => navigate('/medications')}>Check medications</button>
 
+            <hr width='80%' color='black' />
+            <div className='home-header'>Statistics</div>
             <div className='stats-section'>
                 <BarChart width={730} height={300} data={dataStats}>
                 <text x={200} y={20} style={{fontSize:'18px', fill:'black', fontWeight:'bold'}}>Amount of donors in the past 4 years</text>

@@ -13,8 +13,7 @@ const SurveyDone = () => {
       <h2>Survey Completed</h2>
       {valid ? (
         <p className="eligible-message">
-          You are eligible! You can contact your local blood donation centre
-          here: ...
+          You are eligible! We encourage you to visit your local donation centre.
         </p>
       ) : (
         <p className="not-eligible-message">
