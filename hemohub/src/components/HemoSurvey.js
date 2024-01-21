@@ -3,7 +3,6 @@ import { Survey } from 'survey-react-ui'
 import { Model } from 'survey-core'
 import 'survey-core/defaultV2.min.css';
 
-
 const surveyJson = {
     elements: [
         {
