@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "recharts": "^2.10.4",
     "survey-react-ui": "^1.9.126"
   }
 }
