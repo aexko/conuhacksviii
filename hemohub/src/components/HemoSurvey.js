@@ -4,7 +4,6 @@ import { Model } from 'survey-core'
 import 'survey-core/defaultV2.min.css';
 import {BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar} from 'recharts';
 
-
 const surveyJson = {
     elements: [
         {
