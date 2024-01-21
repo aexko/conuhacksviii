@@ -8,8 +8,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    background: linear-gradient(to right, #ff957b, #feb47b); /* Gradient colors */
+    min-height: 60vh;
+    background-color: transparent;
 }
 
 .home-header {

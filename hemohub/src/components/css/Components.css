@@ -15,3 +15,18 @@
         background-color: #c0392b; /* Darker red on hover */
     }
 }
+
+.container {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20vh auto; /* Vertical margin for centering, auto for horizontal centering */
+  max-width: 80vh; /* Set a maximum width for the container */
+}
+
+.input {
+    padding: 8px;
+    font-size: 16px;
+}

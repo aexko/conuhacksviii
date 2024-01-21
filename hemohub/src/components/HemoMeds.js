@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './css/Components.css'
+import './css/HemoMeds.css'
 
 const RestrictedMedications = ['absorica',
 'accutane roche',
@@ -394,29 +396,39 @@ const HemoMeds = () => {
 
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
-    setMessage('');
   };
 
   const checkRestrictedMedication = () => {
-    const lowerCasedInput = userInput.toLowerCase();
-    
-    if (RestrictedMedications.includes(lowerCasedInput)) {
-      setMessage(`Warning: ${userInput} is on the list of restricted medications.`);
+    setMessage(`Checking if "${userInput}" is a restricted medication...`);
+    // Your logic to check if userInput is in the list of restricted medications
+    if (RestrictedMedications.includes(userInput.toLowerCase())) {
+      setMessage(`"${userInput}" is a restricted medication!`);
     } else {
-      setMessage(`${userInput} is not on the list of restricted medications.`);
+      setMessage(`"${userInput}" is not a restricted medication.`);
     }
   };
 
   return (
-    <div>
+    <div className='container'>
       <h1>Restricted Medication Checker</h1>
       <label>
-        Enter Medication:
-        <input type="text" value={userInput} onChange={handleInputChange} />
+        Select Medication:
+        <input
+          className='input'
+          type="text"
+          list="medicationsList"
+          value={userInput}
+          onChange={handleInputChange}
+        />
+        <datalist className='medications-list' id="medicationsList">
+          {RestrictedMedications.map((medication, index) => (
+            <option key={index} value={medication} />
+          ))}
+        </datalist>
       </label>
-      <button onClick={checkRestrictedMedication}>Check</button>
+      <button className='button' onClick={checkRestrictedMedication}>Check</button>
       {message && (
-        <p style={{ color: RestrictedMedications.includes(userInput.toLowerCase()) ? 'red' : 'green' }}>
+        <p className="result-message" style={{ color: RestrictedMedications.includes(userInput.toLowerCase()) ? 'red' : 'green' }}>
           {message}
         </p>
       )}
