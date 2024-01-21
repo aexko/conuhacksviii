@@ -6,33 +6,84 @@ import {
   MessageList,
   Message,
   MessageInput,
+  TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
+const systemMessage = {
+  role: "system",
+  content:
+    "Speak as if you were a customer service representative at a donation center",
+};
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
-      text: "Hello there! I am HemoBot, your personal assistant. How can I help you today?",
-      time: new Date(),
-      avatar: "https://picsum.photos/200",
+      message: "Hello, I'm HemoBot. How can I help you today?",
+      sentTime: new Date().toLocaleString() + "",
       sender: "HemoBot",
     },
   ]);
+  const [isTyping, setIsTyping] = useState(false);
 
   const handleSend = async (message) => {
-    console.log(`New message incoming! ${message}`);
     const newMessage = {
-      message: message,
-      time: new Date(),
-      is_user: true,
-      avatar: "https://picsum.photos/200",
-      sender: "User",
+      message,
       direction: "outgoing",
+      sender: "User",
     };
 
-    const newMessages = [...messages, newMessage]; // add the new message to the list of messages
+    const newMessages = [...messages, newMessage];
 
     setMessages(newMessages);
+    setIsTyping(true);
+    await processMessageToChatGPT(newMessages);
   };
+
+  async function processMessageToChatGPT(chatMessages) {
+    let apiMessages = chatMessages.map((messageObject) => {
+      let role = "";
+      if (messageObject.sender === "ChatGPT") {
+        role = "assistant";
+      } else {
+        role = "user";
+      }
+      return { role: role, content: messageObject.message };
+    });
+
+    // Get the request body set up with the model we plan to use
+    // and the messages which we formatted above. We add a system message in the front to'
+    // determine how we want chatGPT to act.
+    const apiRequestBody = {
+      model: "gpt-3.5-turbo",
+      messages: [
+        systemMessage, // logic of ChatGPT
+        ...apiMessages, // The messages from our chat with ChatGPT
+      ],
+    };
+
+    await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + process.env.OPENAI_API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(apiRequestBody),
+    })
+      .then((data) => {
+        console.log(data);
+        return data.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setMessages([
+          ...chatMessages,
+          {
+            message: data.choices[0].message.content,
+            sender: "ChatGPT",
+          },
+        ]);
+        setIsTyping(false);
+      });
+  }
 
   return (
     <div className="chatbot">
@@ -40,16 +91,20 @@ const ChatBot = () => {
       <div>
         <MainContainer>
           <ChatContainer>
-            <MessageList>
-              {messages.map((message, index) => {
-                return <Message key={index} model={message} />;
+            <MessageList
+              scrollBehavior="smooth"
+              typingIndicator={
+                isTyping ? (
+                  <TypingIndicator content="ChatGPT is typing" />
+                ) : null
+              }
+            >
+              {messages.map((message, i) => {
+                console.log(message);
+                return <Message key={i} model={message} />;
               })}
             </MessageList>
-            <MessageInput
-              onSend={handleSend}
-              attachButton={false}
-              placeholder="TYPE"
-            />
+            <MessageInput placeholder="Type message here" onSend={handleSend} />
           </ChatContainer>
         </MainContainer>
       </div>
